@@ -1,0 +1,43 @@
+---
+
+- name: Add dotdeb.org binary repoistory
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy all' state=present
+  tags: dotdeb
+
+- name: Add dotdeb.org source repository
+  apt_repository: repo='deb-src http://packages.dotdeb.org wheezy all' state=present
+  tags: dotdeb
+
+- name: Add dotdeb.org binary repository for PHP 5.6 on wheezy
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy-php56 all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "56"
+
+- name: Add dotdeb.org source repository for PHP 5.6 on wheezy
+  apt_repository: repo='deb-src http://packages.dotdeb.org wheezy-php56 all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "56"
+
+- name: Add dotdeb.org binary repository for PHP 5.6 (with Zend-Thread-Safety) on wheezy
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy-php56-zts all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "56zts"
+
+- name: Add dotdeb.org source repository for PHP 5.6 (with Zend-Thread-Safety) on wheezy
+  apt_repository: repo='deb-src http://packages.dotdeb.org wheezy-php56-zts all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "56zts"
+
+- name: Add dotdeb.org binary repository for PHP 5.5 on wheezy
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy-php55 all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "55"
+
+- name: Add dotdeb.org source repository for PHP 5.5 on wheezy
+  apt_repository: repo='deb-src http://packages.dotdeb.org wheezy-php55 all' state=present
+  tags: dotdeb
+  when: dotdeb_php_version == "55"
+
+- name: Install dotdeb.org key
+  apt_key: url=http://www.dotdeb.org/dotdeb.gpg
+  tags: dotdeb

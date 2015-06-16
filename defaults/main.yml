@@ -1,0 +1,4 @@
+---
+# Options are: "56", "56zts", "55" or "" for no special PHP.
+# See: https://www.dotdeb.org/instructions/
+dotdeb_php_version: "56"
